@@ -7,6 +7,7 @@ import sys
 
 import pygame
 import ship
+import bullet
 
 def check_events(ship):
     #响应键盘和鼠标事件
@@ -26,6 +27,9 @@ def check_events(ship):
             elif event.key == pygame.constants.K_DOWN:
                 #向右移动飞船
                 ship.moving_down = True
+            elif event.key == pygame.constants.K_SPACE:
+                #飞船开火
+                ship.fire = 1    
         elif event.type == pygame.constants.KEYUP:
             if event.key == pygame.constants.K_RIGHT:
                 #向右移动飞船
@@ -39,7 +43,10 @@ def check_events(ship):
             elif event.key == pygame.constants.K_DOWN:
                 #向右移动飞船
                 ship.moving_down = False
-            
+            elif event.key == pygame.constants.K_SPACE:
+                #飞船开火
+                ship.fire = 0
+                
 def update_screen(ai_settings,screen,ship):
     #更新屏幕上的图像，并切换到新屏幕
 #     if ship.moving_right == True:
@@ -50,7 +57,9 @@ def update_screen(ai_settings,screen,ship):
 #         ship.rect.centery -=1
 #     if ship.moving_down == True:
 #         ship.rect.centery +=1
+    #飞船移动
     ship.move()
+
     
     #每次循环都重绘屏幕
     screen.fill(ai_settings.bg_color)

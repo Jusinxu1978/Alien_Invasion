@@ -12,3 +12,10 @@ class Settings():
         #各对象大小
         self.ship_width = 60
         self.ship_height = 90
+        
+        #子弹类型
+        self.bullet_type = ("common","gold","wood","water","fire","soil")
+        self.bullet_speed = (1,2,3,4,5)
+        self.bullet_track = ("straight_line","bias")
+        self.bullet_maxnum = 10
+        self.fire_frequency = 50
